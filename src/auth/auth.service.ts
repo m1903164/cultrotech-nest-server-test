@@ -51,7 +51,6 @@ export class AuthService {
     return { token, user }
   }
 
-
   async findAll(): Promise<User[]> {
     const users = await this.userModel.find()
     return users
@@ -65,5 +64,9 @@ export class AuthService {
     }
 
     return res
+  }
+
+  async deleteById(id: string): Promise<User> {
+    return await this.userModel.findByIdAndDelete(id)
   }
 }
